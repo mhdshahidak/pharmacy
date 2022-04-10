@@ -1,0 +1,58 @@
+
+{% extends 'master.html' %}
+{% block content %}
+
+
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="formadd">
+                <p>
+                    Add medicine
+                </p>
+                <form method="POST">
+                {% csrf_token %}
+                    <table class="addtable">
+                        <tr>
+                            <td>Medicine name</td>
+                            <td>
+                                <input type="text" name="name" placeholder="medicine name" style="text-transform: uppercase;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quantity</td>
+                            <td>
+                                <input type="number" name="qty" placeholder="Quantity" min="0">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Purchase cost</td>
+                            <td>
+                                <input type="number" name="pcost" placeholder="Purchase Cost" min="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Selling cost</td>
+                            <td>
+                                <input type="number" name="scost" placeholder="Selling Cost" min="0">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button>ADD</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{msg}}</td>      
+                        </tr>
+                   </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}
+

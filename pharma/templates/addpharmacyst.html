@@ -1,0 +1,68 @@
+
+{% extends 'master.html' %}
+{% block content %}
+
+
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="addpharma">
+                <p>
+                    Add Pharmasyst
+                </p>
+                <form method="">
+                    <table class="addphtable">
+                        <tr>
+                            <td>Name</td>
+                            <td>
+                                <input type="text" name="name" placeholder="medicine name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Contact Number</td>
+                            <td>
+                                <input type="number" name="phno" placeholder="Quantity">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>
+                                <input type="number" name="email" placeholder="Purchase Cost">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>genter</td>
+                            <td>
+                                <input type="radio" name="genter" value="male" placeholder="Selling Cost">
+                                <input type="radio" name="genter" value="female" placeholder="Selling Cost">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>
+                                <input type="text" name="psw" placeholder="Enter Password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Confirm Password</td>
+                            <td>
+                                <input type="text" name="c
+                                
+                                psw" placeholder="Confirm Password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button>ADD</button>
+                            </td>
+                        </tr>
+                   </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}
+
