@@ -7,26 +7,26 @@
     <tr>
       <th scope="col">Medicine id</th>
       <th scope="col">Medicine Name</th>
-      <th scope="col">contact number</th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
+      <th scope="col">Avilable Quantity</th>
+      <th scope="col">Purchase Cost</th>
+      <th scope="col">Selling Cost</th>
       
 
     </tr>
   </thead>
   <tbody>
-    {% comment %} {% for i in bookings %} {% endcomment %}
+    {% for m in medicine %}
     <tr>
-      <th scope="row"></th>
-      <td>jfsjd</td>
-      <td>dfbhdshf</td>
-      <td>sdgfb</td>
-      <td>sdjfvbdsj</td>
+      <th scope="row">{{m.id}}</th>
+      <td>{{m.name | upper}}</td>
+      <td>{{m.quantity}}</td>
+      <td>{{m.puchase_cost}}</td>
+      <td>{{m.selling_cost}}</td>
      
 
 
     </tr>
-    {% comment %} {% endfor %} {% endcomment %}
+    {% endfor %}
   </tbody>
 </table>
 

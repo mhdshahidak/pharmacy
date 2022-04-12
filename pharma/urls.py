@@ -4,12 +4,13 @@ from . import views
 app_name = 'pharma'
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.billing, name='billing'),
     path('purchase', views.purchase, name='purchase'),
     path('products', views.view_products, name='products'),
     path('addmedicine', views.addmedicine, name='addmedicine'),
     path('addpharmacyst', views.add_pharmacyst, name='addpharmacyst'),
-    path('bill', views.billing, name='bill'),
+    path('price',views.price_show, name='price'),
+    path('total',views.total, name='total'),
 
   
 ]

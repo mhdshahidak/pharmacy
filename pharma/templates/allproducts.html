@@ -15,18 +15,15 @@
     </tr>
   </thead>
   <tbody>
-    {% comment %} {% for i in bookings %} {% endcomment %}
+    {% for i in medicine %}
     <tr>
-      <th scope="row"></th>
-      <td>jfsjd</td>
-      <td>dfbhdshf</td>
-      <td>sdgfb</td>
-      <td>sdjfvbdsj</td>
-     
-
-
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.name | upper}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.puchase_cost}}</td>
+      <td>{{i.selling_cost}}</td>
     </tr>
-    {% comment %} {% endfor %} {% endcomment %}
+    {% endfor %}
   </tbody>
 </table>
 

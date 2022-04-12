@@ -14,6 +14,12 @@ class Medicine(models.Model):
         db_table = 'medicine'
 
 
+class Bill(models.Model):
+    bill_id = models.AutoField(primary_key=True)
+    medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
+    qty = models.IntegerField()
 
+    class Meta:
+        db_table = 'bill'
 
 

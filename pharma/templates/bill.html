@@ -1,12 +1,122 @@
 {% extends 'master.html' %}
 {% block content %}
+{% load static %}
+<link href="{% static 'css/billing.css' %}" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
 
-    <div class="formbill">
-       
-        <form method="">
-            
-          
-        </form>
-    </div>
+<div class="formbill">
+    <form method="">
+
+
+
+        <h1
+            style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bolder; margin-bottom: 40px;">
+            PHARMA BILLING</h1>
+        <label>Customer Name:</label><input type="text" style="margin-right: 250px;">
+        <label>Phone number:</label><input type="number">
+        <label style="margin-left: 660px; margin-top: 20px;">date:</label><input type="datetime">
+
+        <table class="table" style="margin-top: 20px;">
+            <tr>
+                <th>Sl no</th>
+                <th>Medicine Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Item Total</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td>
+                    <select name="medicine" id="medicine">
+                    {% for m in medicine %}
+                        <option value="{{m.id}}" id="mname">{{m.name}}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <input type="number" min="1" max="{{m.quantity}}" id="qty">
+                </td>
+                <td>
+
+                    <input type="number"  name="price" id="price">
+                </td>
+                <td><input type="number" readonly name="total" id="total"></td>
+            </tr>
+
+        </table>
+        <table style="float: right;">
+            <tr>
+                <td>Sub Total:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>GST:</td>
+                <td><input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Grand Total:
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary" type="button">Button</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+    
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#medicine'). change(function () {
+            // console.log('test')
+            $.ajax({
+                url: 'http://127.0.0.1:8000/price',
+                data: {
+                    'id': $(this).val()
+                },
+                type: 'get',
+                success: function (response) {
+                    // alert(response);
+                    // $('#price').html(response)
+                    var price = Number(response)
+                    $('#price').val(price)
+                    // document.getElementById('price').value=response;
+                }
+            })
+        })
+    })
+
+    $(document).ready(function (){
+        $('#qty').change(function (){
+            $.ajax({
+                url: 'http://127.0.0.1:8000/',
+                data: {
+                    'qty': $(this).val() ,
+                    'price': $('#price').val()
+
+                },
+                type: 'get',
+                success: function (response) {
+                   
+                   $('#total').val(total)
+                }
+            })
+            // alert(Number($('#price').val()) * Number($('qty').val()))
+            // total=Number($('#price').val()) * Number($('qty').val())
+            // $('#total').val(total)
+        })
+
+    })
+
+
+</script>
 
 {% endblock %}
