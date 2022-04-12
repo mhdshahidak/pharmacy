@@ -49,7 +49,7 @@
         <table style="float: right;">
             <tr>
                 <td>GST:</td>
-                <td><input type="text">
+                <td><input type="text" id="gst">
                 </td>
             </tr>
             <tr>
@@ -112,6 +112,28 @@
         })
 
     })
+
+
+    $(document).ready(function (){
+        $('#qty').change(function (){
+            $.ajax({
+                url: 'http://127.0.0.1:8000/gst',
+                data: {
+                    'id': $('#medicine').val() ,
+                    'qty': $('#qty').val() ,
+
+                },
+                type: 'get',
+                success: function (response) {
+                   var gst = Number(response)
+                   $('#gst').val(gst)
+                }
+            })
+            
+        })
+
+    })
+
 
 
 </script>

@@ -12,6 +12,7 @@ urlpatterns = [
     path('price',views.price_show, name='price'),
     path('total',views.total, name='total'),
     path('checkout',views.checkout, name='checkout'),
+    path('gst',views.gst, name='gst'),
 
 
   

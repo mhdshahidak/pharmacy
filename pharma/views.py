@@ -66,12 +66,26 @@ def total(request):
         total_price = int(qty) * int(price)
         gst = (total_price * 5)/100
         grand_total = int(total_price+gst)
-        print(total_price)
-        print(gst)
-        print(grand_total)
-        return render(request,'total.html',{'total_price':total_price})
+        # print(total_price)
+        # print(gst)
+        # print(grand_total)
+        return render(request,'total.html',{'total_price':total_price,})
     except:
         return render(request,'total.html',{'total_price':0})
+
+
+def gst(request):
+    
+    med = request.GET['id']
+    qty = request.GET['qty']
+
+    medid = Medicine.objects.get(id=med)
+    cost = medid.selling_cost
+    total = int(cost) * int(qty)
+    gst = (total * 5)/100
+    print(gst)
+
+    return render(request,'gst.html',{'gst':gst,})
 
 
     
