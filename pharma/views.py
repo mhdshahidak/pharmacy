@@ -1,6 +1,6 @@
 from tokenize import Number
 from unicodedata import name
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import JsonResponse
 
 
@@ -39,14 +39,18 @@ def add_pharmacyst(request):
     return render(request,'addpharmacyst.html')
 
 def billing(request):
-    # if 'name' in request.GET:
-    #     name=request.GET['name']
-    #     medicine=Medicine.objects.filter(name__icontains=name)
-    #     print("success")
-    # else:
-    #     medicine = Medicine.objects.all()
-    #     print("fail")
     medicine = Medicine.objects.all()
+
+    if request.method == 'POST':
+        mid = request.POST['medicine']
+        qty = request.POST['qty']
+        medicineqty = Medicine.objects.get(id=mid)
+
+        medicineqty.quantity = medicineqty.quantity - int(qty)
+        medicineqty.save()
+        return render(request,'bill.html',{'medicine':medicine,})
+
+        
     return render(request,'bill.html',{'medicine':medicine,})
 
 
@@ -102,5 +106,6 @@ def grandtotal(request):
 
 
     
-def checkout(request):
-    pass
+# def checkout(request):
+#     pass
+    
