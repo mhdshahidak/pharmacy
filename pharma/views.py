@@ -67,12 +67,13 @@ def total(request):
         gst = (total_price * 5)/100
         grand_total = int(total_price+gst)
         print(total_price)
-        # print(gst)
-        # print(grand_total)
+        print(gst)
+        print(grand_total)
         return render(request,'total.html',{'total_price':total_price})
     except:
         return render(request,'total.html',{'total_price':0})
 
 
     
-    
+def checkout(request):
+    pass

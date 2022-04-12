@@ -11,6 +11,8 @@ urlpatterns = [
     path('addpharmacyst', views.add_pharmacyst, name='addpharmacyst'),
     path('price',views.price_show, name='price'),
     path('total',views.total, name='total'),
+    path('checkout',views.checkout, name='checkout'),
+
 
   
 ]
