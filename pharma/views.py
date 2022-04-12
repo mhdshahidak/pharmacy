@@ -87,6 +87,19 @@ def gst(request):
 
     return render(request,'gst.html',{'gst':gst,})
 
+def grandtotal(request):
+    
+    med = request.GET['id']
+    qty = request.GET['qty']
+
+    medid = Medicine.objects.get(id=med)
+    cost = medid.selling_cost
+    total = int(cost) * int(qty)
+    gst = (total * 5)/100
+    gtotal = total + gst
+
+    return render(request,'gtotal.html',{'gtotal':gtotal,})
+
 
     
 def checkout(request):

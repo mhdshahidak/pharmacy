@@ -13,6 +13,8 @@ urlpatterns = [
     path('total',views.total, name='total'),
     path('checkout',views.checkout, name='checkout'),
     path('gst',views.gst, name='gst'),
+    path('grandtotal',views.grandtotal, name='grandtotal'),
+
 
 
   

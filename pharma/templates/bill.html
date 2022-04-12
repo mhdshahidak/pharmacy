@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td>Grand Total:
-                <td><input type="text"></td>
+                <td><input type="text" id="gtotal"></td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -127,6 +127,26 @@
                 success: function (response) {
                    var gst = Number(response)
                    $('#gst').val(gst)
+                }
+            })
+            
+        })
+
+    })
+
+    $(document).ready(function (){
+        $('#qty').change(function (){
+            $.ajax({
+                url: 'http://127.0.0.1:8000/grandtotal',
+                data: {
+                    'id': $('#medicine').val() ,
+                    'qty': $('#qty').val() ,
+
+                },
+                type: 'get',
+                success: function (response) {
+                   var gtotal = Number(response)
+                   $('#gtotal').val(gtotal)
                 }
             })
             
